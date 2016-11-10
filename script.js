@@ -1,13 +1,20 @@
-var gameOver = false;
-var numClouds = 10;
-var score = 0;
-$('.score-text').html(score);
-var cloudPositionArray= cloudPositionGenerator();
-var game = setInterval(createCloud, 2000);
-document.getElementById("game").focus();
-checkOverlap();
+var game;
 
+startGame();
 
+function startGame() {
+  game = {
+    isOver:false,
+    numClouds: 10,
+    score: -1,
+    cloudPositions: [],
+    instance: setInterval(createCloud, 2000)
+  }
+  cloudPositionGenerator();
+  updateScore();
+  checkOverlap();
+  document.getElementById("game").focus();
+}
 
 $(document).keydown(function(e) {
     switch(e.which) {
@@ -35,43 +42,42 @@ $(document).keydown(function(e) {
 function cloudPositionGenerator() {
   // 0, 50, 100, 150, 200
   var gamePositionArr = [];
-  for (var i = 0; i<numClouds; i++) {
+  for (var i = 0; i<game.numClouds; i++) {
     var newPosition = Math.floor(Math.random()*5)*50 + 120;
     gamePositionArr.push(newPosition);
-    // if (newPosition !== gamePositionArr[i-1]) {
-    // }
   }
-  return gamePositionArr;
+  game.cloudPositions = gamePositionArr;
 }
 
 function createCloud() {
-  if (cloudPositionArray.length !== 0){
+  if (game.cloudPositions.length !== 0){
     var cloud = $('<div class="cloud"></div>');
-    cloud.css({"top": cloudPositionArray.pop()})
+    cloud.css({"top": game.cloudPositions.pop()})
     $('#game').append(cloud);
   } else {
     setTimeout(endGame,1000)
-    clearInterval(game)
   }
 }
 
-function updateScore() {
-  score +=1;
-  $('.score-text').html(score);
-}
-
 function endGame() {
-  gameOver = true;
-  if(score === numClouds) {
+  clearInterval(game.instance)
+  game.isOver = true;
+  if(game.score === game.numClouds) {
     $('.gameover-text').html('winner')
   } else {
     $('.gameover-text').html('you lose')
   }
 }
 
+function cloudPopped(cloud) {
+  $(cloud).addClass('popped');
+  $('.player').addClass('squawk');
+  setTimeout(function(){ $('.player').removeClass('squawk'); }, 400)
+  updateScore();
+}
+
 function checkOverlap() {
-  console.log('checking...');
-  if (gameOver === true) {
+  if (game.isOver === true) {
     return;
   } else {
     var clouds = $('.cloud');
@@ -80,20 +86,16 @@ function checkOverlap() {
       var isPassed = parseInt($(clouds[i]).css('left'))<50;
       var hasNotAlreadyBeenCounted = !($(clouds[i]).hasClass('popped'));
       if (isSameHorizontal && isPassed && hasNotAlreadyBeenCounted) {
-        $(clouds[i]).addClass('popped');
-        updateScore();
+        cloudPopped(clouds[i]);
       }
     }
     return setTimeout(checkOverlap,100)
   }
 }
 
-function valueInRange(value,min, max) {
-   return (value >= min) && (value <= max);
-}
-
-function overlap (x1,y1,w1,h1,x2,y2,w2,h2) {
-   xOverlap = valueInRange(x1, x2, x2 + w2) || valueInRange(x2, x1, x1 + w1);
-   yOverlap = valueInRange(y1, y2, y2 + h2) || valueInRange(y2, y1, y1 + h1);
-   return xOverlap && yOverlap;
+function updateScore() {
+  game.score +=1;
+  $('.score-text').html(game.score);
+  $('.score-text').addClass('score-animation');
+  setTimeout(function(){ $('.score-text').removeClass('score-animation'); }, 2000)
 }

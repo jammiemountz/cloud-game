@@ -1,0 +1,36 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #c63849;
+      }
+
+      .cls-2 {
+        fill: #edb740;
+      }
+
+      .cls-3 {
+        fill: #fc6;
+      }
+
+      .cls-4 {
+        fill: #992c3f;
+      }
+
+      .cls-5 {
+        fill: none;
+        stroke: #fff;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 8px;
+      }
+    </style>
+  </defs>
+  <title>bird-squawk</title>
+  <path class="cls-1" d="M163.18,59c-35.45,0-66.41,18.62-83,46.3h0s-25.63,42.35-36-3.61c0,0-19,148,119,143.18,53,0,96-41.61,96-92.94S216.18,59,163.18,59Z"/>
+  <path class="cls-2" d="M267.08,194.78s-19.62,7.41-30.2-2.79-7-20.52-7-20.52Z"/>
+  <path class="cls-3" d="M234.39,179s-17.38-14.43,5.48-28.35,50.07,11,50.07,11S240.72,191.39,234.39,179Z"/>
+  <path class="cls-4" d="M119.24,162.26l-92.8-48.83s-2.85,23.34,17.65,36.44l-22.77-3.42s-4.55,25.62,20.5,26.19L23.6,178.44S92.28,257.92,119.24,162.26Z"/>
+  <polyline class="cls-5" points="163.5 118.49 206.5 139 177 155"/>
+  <polyline class="cls-5" points="235.5 110.5 227.29 132 249 132"/>
+</svg>

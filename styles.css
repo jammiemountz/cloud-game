@@ -21,19 +21,26 @@ body {
 
 .score {
   position: absolute;
-  left: 457px;
-  background-color: white;
+  height: 500px;
+  width: 500px;
   border-radius: 50%;
-  height: 30px;
-  width: 30px;
   top: 11px;
 }
 
 .score-text {
   position: relative;
-  left: 9px;
-  font-size: 25px;
+  line-height: 500px;
+  color: white;
+  font-size: 250px;
   margin: 0;
+  text-align: center;
+  width: 500px;
+  opacity: 0;
+  scale: 0;
+}
+
+.score-animation {
+  animation: scoreChange forwards .8s ease-in-out;
 }
 
 .gameover {
@@ -49,6 +56,7 @@ body {
   font-weight: bolder;
   letter-spacing: 4px;
   font-size: 80px;
+  opacity: .5;
 }
 
 .container {
@@ -98,6 +106,10 @@ body {
   animation: flap steps(3) .5s infinite
 }
 
+.player.squawk {
+  background-image: url('./img/bird-squawk.svg');
+}
+
 .cloud {
   height: 50px;
   width: 50px;
@@ -114,9 +126,25 @@ body {
   background-image: url('./img/cloud-burst.svg');
 }
 
+
 @keyframes flap {
   to {
     background-position-x: 150px;
+  }
+}
+
+@keyframes scoreChange {
+  30% {
+    opacity: .5;
+    transform: scale(1);
+  }
+  70% {
+    opacity: .5;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(5);
   }
 }
 
