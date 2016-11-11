@@ -1,0 +1,18 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 53.33">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        font-size: 41.47px;
+        fill: #ff5a5a;
+        font-family: MyriadPro-Regular, Myriad Pro;
+      }
+    </style>
+  </defs>
+  <title>Untitled-2</title>
+  <path class="cls-1" d="M50,23.83A22,22,0,1,0,20.34,44.46c-1.42,2.42-4.33,4.85-10,6.54,0,0,12.05,1.09,19.4-5.24A22,22,0,0,0,50,23.83Z"/>
+  <text class="cls-2" transform="translate(10.84 32.81) rotate(17.52)">?!</text>
+</svg>

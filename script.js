@@ -1,6 +1,6 @@
 var game;
-
-startGame();
+$('.playGame').on('click', startGame);
+$('.exclamation').on('click', startGame);
 
 function startGame() {
   game = {
@@ -10,6 +10,13 @@ function startGame() {
     cloudPositions: [],
     instance: setInterval(createCloud, 2000)
   }
+  $('.exclamation').addClass('hidden');
+  $('.playGame').addClass('hidden');
+  $('.error').addClass('hidden');
+  $('.rays').addClass('rays-animation');
+  $('.earth').addClass('earth-animation');
+  $('.sun').addClass('sun-animation');
+  $('.player').addClass('player-animation')
   cloudPositionGenerator();
   updateScore();
   checkOverlap();
@@ -67,6 +74,7 @@ function endGame() {
   } else {
     $('.gameover-text').html('you lose')
   }
+  $('.playGame').removeClass('hidden');
 }
 
 function cloudPopped(cloud) {
@@ -97,5 +105,5 @@ function updateScore() {
   game.score +=1;
   $('.score-text').html(game.score);
   $('.score-text').addClass('score-animation');
-  setTimeout(function(){ $('.score-text').removeClass('score-animation'); }, 2000)
+  setTimeout(function(){ $('.score-text').removeClass('score-animation'); }, 1000)
 }
